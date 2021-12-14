@@ -5,7 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Video Player</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="./player.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
 </head>
 <body>
   <div class="player">
@@ -20,8 +22,33 @@
             <div class="play_controls">
               <i class="fas fa-play" title="play" id="play-btn"></i>
             </div>
+            <div class="volume">
+              <div class="volume-icon">
+                <i class="fas fa-volume-up" title="Mute"></i>
+              </div>
+              <div class="volume-range" title="Change Volume">
+                <div class="volume-bar"></div>
+              </div>
+            </div>
           </div>
-          <div class="control_right"></div>
+          <div class="controls_right">
+            <div class="speed" title="Playback Rate">
+              <select name="playbackRate"  class="player-speed">
+                <option value="0.5">0.5 x</option>
+                <option value="0.75">0.75 x</option>
+                <option value="1" selected>1 x</option>
+                <option value="1.5">1.5 x</option>
+                <option value="2">2 x</option>
+              </select>
+            </div>
+            <div class="time">
+              <span class="time_elapsed">00:00</span>
+              <span class="time_duration">2:38</span>
+            </div>
+            <div class="fullscreen">
+              <i class="fas fa-expand"></i>
+            </div>
+          </div>
         </div>
       </div>
     </div>
