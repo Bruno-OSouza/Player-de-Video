@@ -1,6 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 :root{
   --primary-color: blue;
   --font-color: #ffffff;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #e3e3e3;
+  /* background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234f4f51' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E"); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
 }
 .player{
   max-width: 80vh;
@@ -15,7 +26,6 @@
   width: 100%;
   height: auto;
   border-radius: 5px;
-
 }
 .fas{
   color: blue;
@@ -24,7 +34,6 @@
 .show_controls{
   width: 100%;
   height: 30%;
-  background: dodgerblue;
   z-index: 2;
   position: absolute;
   bottom: 0;
@@ -70,7 +79,7 @@
   height: 7px;
 }
 .progress_bar{
-  width: 50%;
+  /* width: 50%; */
   height: 100%;
   background: red;
   border-radius: 10px;
@@ -86,7 +95,8 @@
   align-items: center;
   margin-right: 15px;
 }
-.play_controls{
+.play_controls,
+.stop{
   margin-right: 30px;
 }
 .fa-play:hover,
@@ -94,11 +104,33 @@
   color: aqua;
   cursor: pointer;
 }
+.volume{
+  display: grid;
+  grid-template-columns: .5fr 1fr;
+  align-items: center;
+}
 .volume-icon{
+  margin-right: 15px;
   cursor: pointer;
 }
 .volume-range{
-
+  position: relative;
+  background: rgba(70, 70, 70, 0.5);
+  width: 100px;
+  height: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.volume-bar{
+  background: #ffffff;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.2s ease-in;
+}
+.volume-bar:hover{
+  height: 7px;
+  background: var(--primary-color);
 }
 .speed, 
 .time{
@@ -124,4 +156,81 @@ select > option{
   border: none;
   font-size: 1em;
 
+}
+.fullscreen {
+  cursor: pointer;
+}
+.video-fullscreen {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Media Query: Large Smartphone (Vertical) */
+@media screen and (max-width: 600px) {
+  .player {
+    min-width: 0;
+    max-width: 95vw;
+  }
+
+  .fas {
+    font-size: 20px;
+  }
+
+  .controls-container {
+    height: 50px;
+  }
+
+  .control-group {
+    position: relative;
+    top: -25px;
+  }
+
+  .progress-range {
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+  }
+
+  .progress-bar {
+    border-radius: 0;
+  }
+
+  .volume-range {
+    width: 50px;
+    left: 30px;
+    top: -15px;
+  }
+
+  .speed,
+  .time {
+    top: 3px;
+  }
+
+  select {
+    font-size: 12px;
+  }
+
+  .time {
+    font-size: 12px;
+  }
+}
+
+/* Media Query: Large Smartphone (Horizontal) */
+@media screen and (max-width: 900px) and (max-height: 500px) {
+  .player {
+    max-height: 95vh;
+    max-width: auto;
+  }
+
+  video {
+    height: 95vh;
+    object-fit: cover;
+  }
+
+  .video-fullscreen {
+    height: 97.5vh;
+    border-radius: 0;
+  }
 }

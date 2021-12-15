@@ -11,7 +11,8 @@
 </head>
 <body>
   <div class="player">
-    <video src="https://pixabay.com/videos/download/video-31377_tiny.mp4?attachment" class="video"></video>
+    <!-- <video src="https://pixabay.com/videos/download/video-31377_tiny.mp4?attachment" class="video"></video> -->
+    <video class="video" src="http://zencoder-demo.s3.amazonaws.com/trailer_test.mp4" poster="./_images/big-buck-bunny.png"></video>
     <div class="show_controls">
       <div class="controls">
         <div class="progress_range" title="range">
@@ -22,11 +23,14 @@
             <div class="play_controls">
               <i class="fas fa-play" title="play" id="play-btn"></i>
             </div>
+            <div class="stop">
+              <i class="fas fa-stop" title="stop" id="stop-btn"></i>
+            </div>
             <div class="volume">
               <div class="volume-icon">
-                <i class="fas fa-volume-up" title="Mute"></i>
+                <i class="fas fa-volume-up" id="volume-icon" title="Mute"></i>
               </div>
-              <div class="volume-range" title="Change Volume">
+              <div class="volume-range"  title="Change Volume">
                 <div class="volume-bar"></div>
               </div>
             </div>
