@@ -9,10 +9,12 @@ const volumeBar = document.querySelector('.volume-bar');
 const speed = document.querySelector('.player-speed');
 const currentTime = document.querySelector('.time_elapsed');
 const duration = document.querySelector('.time_duration');
-const fullscreenBtn = document.querySelector('.fullscreen');
+const fullscreenBtn = document.getElementById('fullscreen-btn');
 const player = document.querySelector('.player');
 
+//controls==================================//
 
+//Play and Pause----------------------------------//
 function togglePlay() {
   if (video.paused) {
     video.play();
@@ -31,54 +33,13 @@ function showPlayIcon() {
 
 video.addEventListener('ended', showPlayIcon);
 
+// Stop button---------------------//
 function stopVideo(){
   video.pause();
   video.currentTime = 0;
 
   return showPlayIcon();
 }
-
-// let lastVolume = 1;
-
-// function changeVolume(e) {
-//   let volume = e.offsetX / volumeRange.offsetWidth;
-//   if (volume < 0.1){
-//     volume = 0;
-//   }
-//   if (volume > 0.9){
-//     volume = 1;
-//   }
-//   volumeBar.style.width = `${volume * 100}%`;
-//   video.volume = volume;
-
-//   volumeIcon.className = '';
-//   if (volume > 0.5){
-//     volumeIcon.classList.add('fas', 'fa-volume-up');
-//   }else if (volume < 0.5 && volume > 0.2){
-//     volumeIcon.classList.add('fas', 'fa-volume-down');
-//   }else if (volume < 0.2){
-//     volumeIcon.classList.add('fas', 'fa-volume-off');
-//   }else if (volume === 0){
-//     volumeIcon.classList.add('fas', 'fa-volume-mute');
-//   }
-//   lastVolume = volume;
-// }
-
-// function toggleMute() {
-//   volumeIcon.className = '';
-//   if (video.volume) {
-//     lastVolume = video.volume;
-//     video.volume = 0;
-//     volume.style.width = 0;
-//     volumeIcon.classList.add('fas', 'fa-volume-mute');
-//     volumeIcon.setAttribute('title', 'Unmute');
-//   }else{
-//     video.volume = lastVolume;
-//     volumeBar.style.width = `${lastVolume * 100}%`;
-//     volumeIcon.classList.add('fas', 'fa-volume-up');
-//     volumeIcon.setAttribute('title', 'Mute');
-//   }
-// }
 
 // Volume Controls --------------------------- //
 
@@ -125,7 +86,7 @@ function changeVolume(e) {
   lastVolume = volume;
 }
 
-
+// Time display-------------------------//
 function displayTime(time) {
   const minutes = Math.floor(time / 60);
   let seconds = Math.floor(time % 60);
@@ -133,12 +94,13 @@ function displayTime(time) {
   return `${minutes}:${seconds}`;
 }
 
+// Time current -------------------------//
 function updateProgress() {
   progressBar.style.width = `${(video.currentTime / video.duration) * 100}%`;
   currentTime.textContent = `${displayTime(video.currentTime)} /`;
   duration.textContent = `${displayTime(video.duration)}`;
 }
-
+// Progress Bar ------------------------------//
 function setProgress(e) {
   const newTime = e.offsetX / progressRange.offsetWidth;
   progressBar.style.width = `${newTime * 100}%`;
@@ -190,13 +152,15 @@ let fullscreen = false;
 // Toggle fullscreen
 function toggleFullscreen() {
   if (!fullscreen) {
+    fullscreenBtn.classList.replace('fa-expand', 'fa-compress');
     openFullscreen(player);
   } else {
+    fullscreenBtn.classList.replace('fa-compress', 'fa-expand');
     closeFullscreen();
   }
   fullscreen = !fullscreen;
 }
-
+// Event Listeners ===========================//
 playBtn.addEventListener('click', togglePlay);
 video.addEventListener('click', togglePlay);
 

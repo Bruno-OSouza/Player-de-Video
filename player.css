@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 :root{
-  --primary-color: blue;
-  --font-color: #ffffff;
+  --hue: 240;
+  --base-color: hsl(var(--hue)36% 57%);
+  --base-color-second: hsl(var(--hue)65% 88%);
+  --base-color-alt: hsl(var(--hue)57% 53%);
+  --text-color-light: hsl(0 0% 98%);
 }
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: #e3e3e3;
-  /* background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234f4f51' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E"); */
+  background: url(./_images/dragonballz.jpg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,8 +30,11 @@ body {
   border-radius: 5px;
 }
 .fas{
-  color: blue;
+  color: var(--base-color);
   font-size: 30px;
+}
+.fas:hover{
+  color: var(--base-color-second);
 }
 .show_controls{
   width: 100%;
@@ -79,7 +84,6 @@ body {
   height: 7px;
 }
 .progress_bar{
-  /* width: 50%; */
   height: 100%;
   background: red;
   border-radius: 10px;
@@ -99,11 +103,6 @@ body {
 .stop{
   margin-right: 30px;
 }
-.fa-play:hover,
-.fa-pause:hover{
-  color: aqua;
-  cursor: pointer;
-}
 .volume{
   display: grid;
   grid-template-columns: .5fr 1fr;
@@ -115,14 +114,14 @@ body {
 }
 .volume-range{
   position: relative;
-  background: rgba(70, 70, 70, 0.5);
+  background: rgba(23, 23, 23, 0.5);
   width: 100px;
   height: 5px;
   border-radius: 10px;
   cursor: pointer;
 }
 .volume-bar{
-  background: #ffffff;
+  background: var(--base-color);
   width: 100%;
   height: 100%;
   border-radius: 10px;
@@ -130,18 +129,19 @@ body {
 }
 .volume-bar:hover{
   height: 7px;
-  background: var(--primary-color);
+  background: var(--base-color-second);
 }
 .speed, 
 .time{
   margin-right: 15px;
+  color: var(--text-color-light);
 }
 select, option{
   cursor: pointer;
 }
 select{
   background-color: transparent;
-  color: aqua;
+  color: var(--text-color-light);
   border: none;
   font-size: .8rem;
   position: relative;
@@ -172,48 +172,45 @@ select > option{
     min-width: 0;
     max-width: 95vw;
   }
-
   .fas {
     font-size: 20px;
   }
-
   .controls-container {
     height: 50px;
   }
-
-  .control-group {
+  .control_group {
     position: relative;
-    top: -25px;
+    gap: 3px;
   }
-
+  .controls_left,
+  .controls_right{
+    gap: 10px;
+  }
   .progress-range {
     width: 100%;
     top: 0;
     left: 0;
     border-radius: 0;
   }
-
   .progress-bar {
     border-radius: 0;
   }
-
+  .play_controls,
+  .stop{
+    margin: 0;
+  }
   .volume-range {
     width: 50px;
-    left: 30px;
-    top: -15px;
   }
-
   .speed,
   .time {
-    top: 3px;
+    margin: 0;
   }
-
   select {
-    font-size: 12px;
+    font-size: 10px;
   }
-
   .time {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 
@@ -223,12 +220,10 @@ select > option{
     max-height: 95vh;
     max-width: auto;
   }
-
   video {
     height: 95vh;
     object-fit: cover;
   }
-
   .video-fullscreen {
     height: 97.5vh;
     border-radius: 0;
